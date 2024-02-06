@@ -1,0 +1,35 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12">
+      <ol>
+        <li>Add A button which says 'Display Details'</li>
+        <li>Add a paragraph with any content of your choice (e.g. 'Secret Password = tuna')</li>
+        <li>Toggle the displaying of that paragraph with the button created in the first step</li>
+        <li>Log all button clicks in an array and output that array below the secret paragraph (maybe log a timestamp or
+          simply an incrementing number)</li>
+        <li>Starting at the 5th log item, give all future log items a blue background (via ngStyle) and white color
+          (ngClass)</li>
+      </ol>
+    </div>
+  </div>
+  <hr>
+  <div class="row">
+    <button class="btn btn-primary btn-lg" (click)="onDetailsButtonClick()">Display Details</button>
+  </div>
+</div>
+<div class="row" *ngIf="showHiddenText">
+  Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas eos minus cum repellendus quasi quis nostrum eaque,
+  doloremque, aliquam veritatis illo veniam adipisci vero facere similique. Sapiente quibusdam ullam error!
+
+  Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit error enim, quaerat commodi animi sint? Inventore
+  eveniet dolorem labore voluptatum deserunt voluptate provident! Culpa officia qui explicabo beatae, ipsum eum?
+</div>
+<div class="row">
+  <h3 *ngIf="clicksArray.length > 0">Click Details</h3>
+  <div *ngFor="let click of clicksArray">
+    <hr>
+    <p>Timestamp: {{click.timestamp | date:'medium'}}</p>
+    <p>Total Clicks: {{click.totalClicks}}</p>
+    <hr>
+  </div>
+</div>
