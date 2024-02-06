@@ -26,7 +26,8 @@
 </div>
 <div class="row">
   <h3 *ngIf="clicksArray.length > 0">Click Details</h3>
-  <div *ngFor="let click of clicksArray">
+  <div *ngFor="let click of clicksArray; let i = index" [ngStyle]="{backgroundColor: i >= 4 ? 'blue' : 'transparent'}"
+    [ngClass]="{whiteText: i >= 4}">
     <hr>
     <p>Timestamp: {{click.timestamp | date:'medium'}}</p>
     <p>Total Clicks: {{click.totalClicks}}</p>
