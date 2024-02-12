@@ -7,7 +7,6 @@ import { Ingredient } from 'src/app/shared/ingredient.model';
   styleUrls: ['./edit-shopping-list.component.css']
 })
 export class EditShoppingListComponent implements OnInit {
-
   @ViewChild('nameInput', { static: true }) nameInputRef: ElementRef;
   @ViewChild('amountInput', { static: true }) amountInputRef: ElementRef;
 
