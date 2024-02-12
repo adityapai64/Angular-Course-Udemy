@@ -1,0 +1,9 @@
+.stop {
+    border: 1px solid black;
+    width: 35%;
+    height: 75px;
+    background: red;
+    color: black;
+    text-align: center;
+    margin-left: 32%;
+}
