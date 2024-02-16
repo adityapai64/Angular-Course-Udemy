@@ -8,7 +8,7 @@ import { Recipe } from '../recipe.model';
 })
 export class RecipeDetailComponent implements OnInit {
   @Input() recipe: Recipe;
-  dropdownActive: boolean = false;
+  //dropdownActive: boolean = false;
   constructor() { }
 
   ngOnInit(): void {
