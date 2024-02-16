@@ -1,5 +1,5 @@
 // import { Directive, ElementRef, HostBinding, HostListener, Input, Renderer2 } from "@angular/core";
-import { Directive, HostBinding, HostListener } from "@angular/core";
+import { Directive, ElementRef, HostBinding, HostListener } from "@angular/core";
 
 @Directive({
     selector: '[appDropdown]'
@@ -19,7 +19,13 @@ export class DropdownDirective {
 
     //Author's solution
     @HostBinding('class.open') toggle: boolean = false;
-    @HostListener('click') appDropdown() {
-        this.toggle = !this.toggle;
+    @HostListener('document:click', ['$event']) toggleIsOpen(event: Event) {
+        this.toggle = this.elementRef.nativeElement.contains(event.target) ? !this.toggle : false;
+    }
+    // @HostListener('click') appDropdown() {
+    //     this.toggle = !this.toggle;
+    // }
+    constructor(private elementRef: ElementRef) {
+
     }
 }
