@@ -8,6 +8,10 @@ import { ServerComponent } from "./servers/server/server.component";
 import { ServersComponent } from "./servers/servers.component";
 import { UserComponent } from "./users/user/user.component";
 import { UsersComponent } from "./users/users.component";
+import { AuthGuard } from "./auth-guard.service";
+import { CanDeactivateGuard } from "./servers/edit-server/can-deactivate-guard.service";
+import { ErrorPageComponent } from "./error-page/error-page.component";
+import { ServerResolver } from "./servers/server/server-resolver.service";
 
 const appRoutes: Routes = [
     {
@@ -28,22 +32,31 @@ const appRoutes: Routes = [
     },
     {
         path: 'servers',
+        //canActivate: [AuthGuard], **guards the entire path
+        canActivateChild: [AuthGuard], //Guards only children
         component: ServersComponent,
         children: [
             {
                 path: ':id',
-                component: ServerComponent
+                component: ServerComponent,
+                resolve: { server: ServerResolver }
             },
             {
                 path: ':id/edit',
-                component: EditServerComponent
+                component: EditServerComponent,
+                canDeactivate: [CanDeactivateGuard]
             },
         ]
     },
 
-    {
+    /* {
         path: 'not-found',
         component: PageNotFoundComponent
+    } */
+    {
+        path: 'not-found',
+        component: ErrorPageComponent,
+        data: { message: 'Page not found' }
     },
 
     {
@@ -55,6 +68,7 @@ const appRoutes: Routes = [
 
 @NgModule({
     imports: [
+        /* RouterModule.forRoot(appRoutes, { useHash: true }), */ //For older browsers, with a hashtag in the url eg localhost:4200/#/users
         RouterModule.forRoot(appRoutes),
     ],
     exports: [RouterModule]
