@@ -10,6 +10,9 @@ import { EditShoppingListComponent } from './shopping-list/edit-shopping-list/ed
 import { RecipeListComponent } from './recipes/recipe-list/recipe-list.component';
 import { RecipeDetailComponent } from './recipes/recipe-detail/recipe-detail.component';
 import { DropdownDirective } from './shared/dropdown.directive';
+import { AppRoutingModule } from './app-routing.module';
+import { FormsModule } from '@angular/forms';
+import { NoRecipeSelectedComponent } from './recipes/no-recipe-selected/no-recipe-selected.component';
 
 @NgModule({
   declarations: [
@@ -21,10 +24,13 @@ import { DropdownDirective } from './shared/dropdown.directive';
     ShoppingListComponent,
     EditShoppingListComponent,
     RecipeDetailComponent,
-    DropdownDirective
+    DropdownDirective,
+    NoRecipeSelectedComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    FormsModule,
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]

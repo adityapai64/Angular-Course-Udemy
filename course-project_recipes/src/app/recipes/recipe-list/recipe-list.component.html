@@ -4,4 +4,5 @@
     </div>
 </div>
 <hr>
-<app-recipe-item *ngFor="let recipe of recipes" [recipe]="recipe"></app-recipe-item>
+<app-recipe-item *ngFor="let recipe of recipes; index as i" (click)="onItemClick(i)"
+    [recipe]="recipe"></app-recipe-item>
