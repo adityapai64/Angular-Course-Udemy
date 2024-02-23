@@ -1,8 +1,12 @@
 <div class="row">
     <div class="col-xs-12">
-        <button class="btn btn-success">New Recipe</button>
+        <button class="btn btn-success" (click)="onNewRecipeClick()">New Recipe</button>
     </div>
 </div>
 <hr>
-<app-recipe-item *ngFor="let recipe of recipes; index as i" (click)="onItemClick(i)"
-    [recipe]="recipe"></app-recipe-item>
+<!-- my solution to challenge in lesson 160 -->
+<!-- <app-recipe-item *ngFor="let recipe of recipes; index as i" (click)="onItemClick(i)"
+    [recipe]="recipe"></app-recipe-item> -->
+
+<!-- Author's solution -->
+<app-recipe-item *ngFor="let recipe of recipes; index as i" [recipe]="recipe" [id]=i></app-recipe-item>

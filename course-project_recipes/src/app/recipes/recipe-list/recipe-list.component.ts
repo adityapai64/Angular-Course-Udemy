@@ -10,12 +10,19 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class RecipeListComponent implements OnInit {
   recipes!: Recipe[];
+
   constructor(private recipeService: RecipeService, private router: Router, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
     this.recipes = this.recipeService.getRecipes();
   }
-  onItemClick(index: number) {
-    this.router.navigate([index], { relativeTo: this.route, queryParamsHandling: 'preserve' });
+
+  onNewRecipeClick() {
+    this.router.navigate(['new'], { relativeTo: this.route });
   }
+
+  //Part of my solution to challenge in lesson 160
+  // onItemClick(index: number) {
+  //   this.router.navigate([index], { relativeTo: this.route, queryParamsHandling: 'preserve' });
+  // }
 }
